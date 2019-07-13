@@ -97,10 +97,11 @@ class MPU9250:
 
     ## Constructor
     #  @param [in] address MPU-9250 I2C slave address default:0x68
-    def __init__(self, address=SLAVE_ADDRESS):
+    def __init__(self, address=SLAVE_ADDRESS, magnet=True):
         self.address = address
         self.configMPU9250(GFS_250, AFS_2G)
-        self.configAK8963(AK8963_MODE_C8HZ, AK8963_BIT_16)
+        if magnet:
+            self.configAK8963(AK8963_MODE_C8HZ, AK8963_BIT_16)
 
     ## Search Device
     #  @param [in] self The object pointer.
